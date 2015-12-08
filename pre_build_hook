@@ -1,5 +1,11 @@
 #!/bin/bash
+set -eux
 
-# Add here any the actions which are required before plugin build
-# like packages building, packages downloading from mirrors and so on.
-# The script should return 0 if there were no errors.
+ROOT="$(dirname `readlink -f $0`)"
+MODULES="${ROOT}"/deployment_scripts/puppet/modules
+mkdir -p "${MODULES}"
+
+git clone -b 0.1.0 --depth 1 https://github.com/sorrowless/puppet-twemproxy.git "${MODULES}/"twemproxy
+git clone -b 4.9.1 --depth 1 https://github.com/puppetlabs/puppetlabs-stdlib.git "${MODULES}/"stdlib
+git clone -b 2.0.1 --depth 1 https://github.com/puppetlabs/puppetlabs-concat.git "${MODULES}/"concat
+
