@@ -1,7 +1,0 @@
-attributes:
-  fuel_twemproxy:
-    value: 'true'
-    label: 'Enable twemproxy for controllers'
-    description: 'Place twemproxy between controller services and memcached'
-    weight: 10
-    type: "checkbox"

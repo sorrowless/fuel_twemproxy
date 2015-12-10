@@ -1,3 +1,13 @@
+- id: hiera_override
+  type: puppet
+  groups: [primary-controller, controller, compute, ironic-compute]
+  required_for: [globals, deploy_end]
+  requires: [hiera]
+  parameters:
+    puppet_manifest: "puppet/manifests/hiera_override.pp"
+    puppet_modules: "puppet/modules:/etc/puppet/modules"
+    timeout: 3600
+
 - id: twemproxy
   type: puppet
   groups: [primary-controller, controller, compute, ironic-compute]
@@ -5,5 +15,5 @@
   requires: [openstack-haproxy]
   parameters:
     puppet_manifest: "puppet/manifests/twemproxy.pp"
-    puppet_modules: "puppet/modules"
+    puppet_modules: "puppet/modules:/etc/puppet/modules"
     timeout: 3600

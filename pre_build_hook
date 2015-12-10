@@ -3,9 +3,7 @@ set -eux
 
 ROOT="$(dirname `readlink -f $0`)"
 MODULES="${ROOT}"/deployment_scripts/puppet/modules
+rm -rf "${MODULES}"
 mkdir -p "${MODULES}"
 
 git clone -b 0.1.0 --depth 1 https://github.com/sorrowless/puppet-twemproxy.git "${MODULES}/"twemproxy
-git clone -b 4.9.1 --depth 1 https://github.com/puppetlabs/puppetlabs-stdlib.git "${MODULES}/"stdlib
-git clone -b 2.0.1 --depth 1 https://github.com/puppetlabs/puppetlabs-concat.git "${MODULES}/"concat
-
